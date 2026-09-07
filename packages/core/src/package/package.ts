@@ -62,12 +62,12 @@ class PackageStore extends FoxcordStore {
         const entry = this.packages.get(name);
         if (!entry) return;
         if (entry.package.core) return;
-        if (entry.toggled == toggle) return;
+        if (entry.toggled === toggle) return;
 
         entry.toggled = toggle;
 
         if (!hotLoadable(entry.package)) {
-            if (toggle == entry.loaded) {
+            if (toggle === entry.loaded) {
                 this.pendingPackages--;
             } else {
                 this.pendingPackages++;
@@ -108,18 +108,18 @@ export function initPackages() {
 }
 
 function hotLoadable(pack: PackageInterface) {
-    return pack.patches == undefined;
+    return pack.patches === undefined;
 }
 
 function isStartup(): boolean {
-    return webpack == undefined;
+    return webpack === undefined;
 }
 
 export function definePackage(plugin: PackageInterface): PackageInterface {
     plugin.patches?.forEach(patch => {
         replaceSource(patch, plugin.name);
 
-        if (patch.type == PatchType.RegexPatch) {
+        if (patch.type === PatchType.RegexPatch) {
             patch.replace.forEach(replace => {
                 replace.with = replaceSelfRef(plugin.name, replace.with);
             })
@@ -158,10 +158,12 @@ export function startupLoadPackage(pack: PackageInterface) {
 
     const pluginPatches = pack.patches || [];
 
-    pluginPatches.forEach(patch => replaceSource(patch, pack.name));
+    pluginPatches.forEach(patch => {
+        replaceSource(patch, pack.name);
+    });
 
-    patches.regexPatches.push(...pluginPatches.filter((patch) => patch.type == PatchType.RegexPatch));
-    patches.astPatches.push(...pluginPatches.filter((patch) => patch.type == PatchType.AstPatch));
+    patches.regexPatches.push(...pluginPatches.filter((patch) => patch.type === PatchType.RegexPatch));
+    patches.astPatches.push(...pluginPatches.filter((patch) => patch.type === PatchType.AstPatch));
 
     if (pack.load) {
         pack.load();
