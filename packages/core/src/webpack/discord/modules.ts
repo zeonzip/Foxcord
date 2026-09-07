@@ -1,5 +1,7 @@
-import { vulpmap, utils } from '../vulpmap';
 import { FilterType, FullExportsFilterBuilder } from '@foxcord/vulpmap';
+import { utils, vulpmap } from '../vulpmap';
+
+type ReactModule = typeof import('react');
 
 export type JsxFunc = (element: string, body: any, props?: any) => object;
 
@@ -22,7 +24,7 @@ vulpmap.registerMapperAndSearch(
     }
 ).then(mapped => ReactJsxModule = mapped as unknown as JsxModule);
 
-export var React: any;
+export var React: ReactModule;
 vulpmap.registerMapperAndSearch(
     "React/React",
     {
@@ -34,4 +36,4 @@ vulpmap.registerMapperAndSearch(
             .retrieveRoot(false)
             .finish(),
     }
-).then(mapped => React = mapped as any);
+).then(mapped => React = mapped as ReactModule);

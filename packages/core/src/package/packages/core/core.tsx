@@ -17,6 +17,7 @@ import {
 
 import styles from './core.css';
 import { StyleManager } from '@foxcord/core/webpack/discord/style';
+import { Container } from '@/utils/ui.tsx';
 
 const pluginName = 'Core';
 
@@ -96,7 +97,7 @@ export default definePackage({
                 packageStore.reactSubscribe();
 
                 return <>
-                    {packageStore.isPending && <h1 className={"paddedBottom"}>Packages enabled/disabled require a refresh of the Discord client to update it's status.</h1>}
+                    {packageStore.isPending && <Container><h1 className={"paddedBottom"}>Packages enabled/disabled require a refresh of the Discord client to update it's status.</h1></Container>}
                     {[...packageStore.entries].map(([k, v]) => <Package key={k} pack={v.package} status={v.toggled} toggle={() => packageStore.setToggled(v.package.name, !v.toggled)}></Package>)}
                 </>
             },
@@ -133,10 +134,10 @@ interface PackageProps {
 }
 
 function Package({ pack, status, toggle }: PackageProps) {
-    return <div>
+    return <Container>
         <h1 className={"halfPaddedBottom"}>{`${pack.name}:`}</h1>
         <div className={"paddedBottom"}>
             <Button text={status ? "Disable" : "Enable"} variant={"secondary"} onClick = {toggle} disabled={pack.core === true}></Button>
         </div>
-    </div>
+    </Container>
 }
