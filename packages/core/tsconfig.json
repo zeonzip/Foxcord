@@ -11,6 +11,7 @@
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
+    "forceConsistentCasingInFileNames": false,
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
@@ -31,7 +32,9 @@
     "experimentalDecorators": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@foxcord/core/*": ["./src/*"]
+      "@foxcord/core/*": ["./src/*"],
+      "bsjd/jsx-runtime": ["./build/runtime/runtime.ts"],
+      "@foxcord/*": ["../*/src/index.ts"]
     }
   }
 }

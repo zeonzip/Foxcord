@@ -4,7 +4,7 @@ import type {
     WebpackCacheObject,
     WebpackFactory,
     WebpackModules,
-} from '@foxcord/coreTypes';
+} from '@foxcord/core';
 
 export * as utils from './utils';
 

@@ -16,6 +16,6 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "@foxcord/coreTypes": "link:../core"
+    "@foxcord/core": "workspace:*"
   }
 }
