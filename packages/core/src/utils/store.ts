@@ -17,7 +17,7 @@ export abstract class FoxcordStore {
 
     protected emit() {
         this.version++;
-        this.listeners.forEach(listener => listener());
+        this.listeners.forEach(listener => {listener()});
     }
 
     reactSubscribe() {

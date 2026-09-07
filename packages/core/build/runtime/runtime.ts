@@ -1,4 +1,4 @@
-import { PackageInterface } from '../../src/package/package';
+import type { PackageInterface } from '@/package/package';
 
 declare global {
     interface Window {
@@ -20,7 +20,7 @@ export function jsxs(...args) {
 export const Fragment = Symbol.for("react.fragment");
 
 export namespace JSX {
-    export interface Element {}
+    export type Element = {}
     export interface IntrinsicElements {
         [tag: string]: any;
     }

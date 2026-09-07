@@ -156,7 +156,7 @@ export class VulpMap {
     }
 
     async registerMapperAndSearch(name: string, mapper: Mapper) {
-        let found = undefined;
+        let found ;
 
         if (this.webpack) {
             const webpack = this.webpack;

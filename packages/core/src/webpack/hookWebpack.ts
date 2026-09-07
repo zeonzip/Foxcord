@@ -1,5 +1,5 @@
 import {log, throwingError} from "../log";
-import { Webpack, WebpackCache, WebpackModules, WebpackRequire } from './types';
+import type { Webpack, WebpackRequire } from './types';
 import {proxyModules, setupPatches} from "./patch";
 
 export var webpack: Webpack | undefined = undefined;
@@ -7,7 +7,7 @@ const webpackResolvers = Promise.withResolvers<Webpack>();
 export const webpackPromise = webpackResolvers.promise;
 
 function isWebpackRequire(obj: unknown, newPath: string): obj is WebpackRequire {
-    let string = String(obj);
+    const string = String(obj);
 
     return (
         newPath.startsWith('/assets/') &&

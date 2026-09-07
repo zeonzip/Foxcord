@@ -11,7 +11,7 @@ import { Button } from '@foxcord/core/webpack/discord/ui';
 import {
     accessPackageRuntime,
     definePackage,
-    PackageInterface,
+    type PackageInterface,
     packageStore,
 } from '@foxcord/core/package/package';
 
@@ -64,7 +64,7 @@ export default definePackage({
     ],
     pluginsItem: () => {
         function PackageIcon(props: any) {
-            let {
+            const {
                     size: _,
                     width: _w,
                     height: _h,
@@ -91,8 +91,8 @@ export default definePackage({
             );
         }
 
-        let custom = createCustom('packages_button', {
-            Component: function () {
+        const custom = createCustom('packages_button', {
+            Component: () => {
                 packageStore.reactSubscribe();
 
                 return <>
@@ -103,17 +103,17 @@ export default definePackage({
             useSearchTerms: () => ['Packages'],
         });
 
-        let category = createCategory('packages_category', {
+        const category = createCategory('packages_category', {
             useTitle: () => "Packages:",
             buildLayout: () => [custom],
         });
 
-        let panel = createPanel('packages_panel', {
+        const panel = createPanel('packages_panel', {
             useTitle: () => 'Packages',
             buildLayout: () => [category],
         });
 
-        let sidebar = createSidebarItem('packages_item', {
+        const sidebar = createSidebarItem('packages_item', {
             useTitle: () => 'Packages',
             icon: PackageIcon,
             buildLayout: () => [panel],

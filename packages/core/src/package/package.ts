@@ -3,7 +3,7 @@ import corePlugin from './packages/core/core';
 import privacyPlugin from './packages/privacy';
 import experimentsPlugin from './packages/experiments';
 import testPlugin from './packages/test';
-import { PatchType, UniformPatch } from '@foxcord/vulpatch';
+import { PatchType, type UniformPatch } from '@foxcord/vulpatch';
 import { FoxcordStore } from '@foxcord/core/utils/store';
 import { webpack } from '@foxcord/core/webpack/hookWebpack';
 

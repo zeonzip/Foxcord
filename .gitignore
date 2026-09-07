@@ -13,3 +13,5 @@ yarn-error.log*
 **/.vscode/*
 **/.idea
 **/.DS_Store
+
+pnpm-workspace.yaml

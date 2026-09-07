@@ -1,4 +1,4 @@
-import {WebpackFactory, WebpackRequire} from "./types";
+import type {WebpackFactory, WebpackRequire} from "./types";
 import * as vulpatch from '@foxcord/vulpatch';
 import { vulpmap } from './vulpmap';
 import { webpack } from './hookWebpack';
@@ -57,7 +57,7 @@ function patchFactory(id: number, factory: WebpackFactory): WebpackFactory {
     const pristine = String(factory);
     const patched = vulpatch.applyPatches(pristine, patches);
 
-    let stringifiedBody = `${patched}[${id}](...args)\n//# sourceURL=PatchedChunk${id}.js`;
+    const stringifiedBody = `${patched}[${id}](...args)\n//# sourceURL=PatchedChunk${id}.js`;
 
     return Function("...args", stringifiedBody) as WebpackFactory;
 }

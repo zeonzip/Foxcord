@@ -1,5 +1,5 @@
 import * as esbuild from 'esbuild';
-import * as path from "path";
+import * as path from "node:path";
 
 await esbuild.build({
     entryPoints: ["src/universal/preload.ts"],

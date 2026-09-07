@@ -1,4 +1,4 @@
-import * as acorn from 'acorn';
+import type * as acorn from 'acorn';
 
 export type VulpatchCtx = {
     astPatches: AstPatch[];

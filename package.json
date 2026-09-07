@@ -1,0 +1,4 @@
+{
+    "name": "foxcord",
+    "workspaces": ["packages/*", "apps/*"]
+}
