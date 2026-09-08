@@ -1,27 +1,27 @@
 {
-  "name": "@foxcord/core",
-  "version": "1.0.0",
-  "description": "",
-  "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    }
-  },
-  "scripts": {
-    "build-preload": "node ./build/build.mjs"
-  },
-  "dependencies": {
-    "@foxcord/vulpatch": "workspace:*",
-    "@foxcord/vulpmap": "workspace:*"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.5.12",
-    "esbuild": "^0.28.2",
-    "oxfmt": "^0.65.0",
-    "oxlint": "^1.80.0",
-    "typescript": "^5.5.3",
-    "@types/react": "^19.2.18"
-  },
-  "private": true
+	"name": "@foxcord/core",
+	"version": "1.0.0",
+	"description": "",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
+		}
+	},
+	"scripts": {
+		"build-preload": "node ./build/build.mjs"
+	},
+	"dependencies": {
+		"@foxcord/vulpatch": "workspace:*",
+		"@foxcord/vulpmap": "workspace:*"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.12",
+		"esbuild": "^0.28.2",
+		"oxfmt": "^0.65.0",
+		"oxlint": "^1.80.0",
+		"typescript": "^5.5.3",
+		"@types/react": "^19.2.18"
+	},
+	"private": true
 }

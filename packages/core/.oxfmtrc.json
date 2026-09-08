@@ -1,9 +1,9 @@
 {
-  "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "singleQuote": true,
-  "jsxSingleQuote": false,
-  "semi": true,
-  "tabWidth": 4,
-  "trailingComma": "all",
-  "ignorePatterns": ["dist/**"]
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"singleQuote": true,
+	"jsxSingleQuote": false,
+	"semi": true,
+	"tabWidth": 4,
+	"trailingComma": "all",
+	"ignorePatterns": ["dist/**"]
 }

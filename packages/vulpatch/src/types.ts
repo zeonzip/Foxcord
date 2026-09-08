@@ -1,40 +1,46 @@
-import type * as acorn from 'acorn';
+import type * as acorn from "acorn";
 
 export type VulpatchCtx = {
-    astPatches: AstPatch[];
-    regexPatches: RegexPatch[];
-}
+	astPatches: AstPatch[];
+	regexPatches: RegexPatch[];
+};
 
 export enum PatchType {
-    RegexPatch,
-    AstPatch
+	RegexPatch,
+	AstPatch,
 }
 
 export interface PatchBase {
-    moduleMatch: string | RegExp;
-    source?: string;
+	moduleMatch: string | RegExp;
+	source?: string;
 }
 
 export type AstPatch = PatchBase & {
-    processors: { processAst: (node: acorn.Program, markDirty: () => void) => void }[];
-    type: PatchType.AstPatch;
+	processors: {
+		processAst: (node: acorn.Program, markDirty: () => void) => void;
+	}[];
+	type: PatchType.AstPatch;
 };
 
 export type RegexPatch = PatchBase & {
-    replace: {
-        replace: string | RegExp;
-        with: string;
-    }[];
-    type: PatchType.RegexPatch;
-}
+	replace: {
+		replace: string | RegExp;
+		with: string;
+	}[];
+	type: PatchType.RegexPatch;
+};
 
-export type UniformPatch = PatchBase & ({
-    replace: {
-        replace: RegExp;
-        with: string;
-    }[];
-    type: PatchType.RegexPatch;
-} | {
-    processors: AstPatch['processors'];
-    type: PatchType.AstPatch;
-})
+export type UniformPatch = PatchBase &
+	(
+		| {
+				replace: {
+					replace: RegExp;
+					with: string;
+				}[];
+				type: PatchType.RegexPatch;
+		  }
+		| {
+				processors: AstPatch["processors"];
+				type: PatchType.AstPatch;
+		  }
+	);

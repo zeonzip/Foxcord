@@ -1,3 +1,7 @@
 .halfPaddedBottom {
-    padding-bottom: 9px;
+	padding-bottom: 9px;
+}
+
+.fc-prominent-text {
+	font-weight: 500;
 }

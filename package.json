@@ -1,4 +1,10 @@
 {
-    "name": "foxcord",
-    "workspaces": ["packages/*", "apps/*"]
+	"name": "foxcord",
+	"workspaces": [
+		"packages/*",
+		"apps/*"
+	],
+	"devDependencies": {
+		"@biomejs/biome": "2.5.12"
+	}
 }

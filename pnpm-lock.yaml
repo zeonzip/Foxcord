@@ -6,7 +6,11 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      '@biomejs/biome':
+        specifier: 2.5.12
+        version: 2.5.12
 
   packages/core:
     dependencies:

@@ -1,7 +1,8 @@
 .fc-container {
-    padding: var(--space-32);
-    margin: 5px;
+	padding: var(--space-16);
+	margin: 5px;
 
-    background-color: var(--background-mod-muted);
-    border-radius: 12px;
+	background-color: var(--background-mod-muted);
+	border: solid 1px var(--border-subtle);
+	border-radius: var(--radius-md);
 }

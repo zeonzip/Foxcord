@@ -1,35 +1,35 @@
 {
-  "name": "@foxcord/vulpatch",
-  "version": "1.0.0",
-  "main": "index.js",
+	"name": "@foxcord/vulpatch",
+	"version": "1.0.0",
+	"main": "index.js",
 	"exports": {
 		".": {
 			"types": "./src/index.ts",
 			"default": "./src/index.ts"
 		}
 	},
-  "scripts": {
-    "test": "tsc"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.10.0",
-      "onFail": "download"
-    }
-  },
-  "type": "module",
-  "dependencies": {
-    "acorn": "^8.18.0",
-    "acorn-walk": "^8.3.5",
-    "astring": "^1.9.0",
-    "estree-walker": "^3.0.3"
-  },
-  "devDependencies": {
-    "@types/estree": "^1.0.9",
-    "typescript": "^5.9.3"
-  }
+	"scripts": {
+		"test": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "11.10.0",
+			"onFail": "download"
+		}
+	},
+	"type": "module",
+	"dependencies": {
+		"acorn": "^8.18.0",
+		"acorn-walk": "^8.3.5",
+		"astring": "^1.9.0",
+		"estree-walker": "^3.0.3"
+	},
+	"devDependencies": {
+		"@types/estree": "^1.0.9",
+		"typescript": "^5.9.3"
+	}
 }
