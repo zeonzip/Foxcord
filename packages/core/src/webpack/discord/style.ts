@@ -1,10 +1,20 @@
 export class StyleManager {
 	private static styleElements = new Map<string, HTMLStyleElement>();
 	private static parentContainer: HTMLElement | undefined = undefined;
+
+	private static pendingQueue: { id: string; css:string }[] = [];
+	private static isListening: boolean = false;
+
 	private static PARENT_ID = "foxcord-mod-styles";
 
 	public static addStyle(id: string, css: string) {
 		if (this.styleElements.has(id)) return;
+
+		if (!document || !document.head) {
+			this.pendingQueue.push({ id, css });
+			this.setupListener();
+			return;
+		}
 
 		const el = document.createElement("style");
 		el.id = `foxcord-style-${id}`;
@@ -20,6 +30,27 @@ export class StyleManager {
 			el.remove();
 			this.styleElements.delete(id);
 		}
+	}
+
+	private static setupListener() {
+		if (this.isListening) return;
+		this.isListening = true;
+
+		const flush = () =>{
+			if (!document || !document.head) return;
+
+			document.removeEventListener("DOMContentLoaded", flush);
+
+			const queue = [...this.pendingQueue];
+			this.pendingQueue = [];
+			this.isListening = false;
+
+			for (const { id, css} of queue) {
+				this.addStyle(id, css);
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", flush);
 	}
 
 	private static retrieveGlobalElement(): HTMLElement {
