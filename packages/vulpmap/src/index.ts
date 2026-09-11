@@ -120,6 +120,8 @@ export class VulpMap {
 	}
 
 	checkModule(module: WebpackCacheObject, factory: WebpackFactory) {
+		if (!module?.exports) return;
+
 		const ctx = {
 			exports: module.exports,
 			factory: factory as WebpackFactory,
@@ -155,7 +157,8 @@ export class VulpMap {
 	}
 
 	async retrieveWebpack() {
-		return (this.webpack ??= await this.webpackPromise);
+		this.webpack ??= await this.webpackPromise;
+		return this.webpack;
 	}
 
 	async registerMapper(name: string, mapper: Mapper) {

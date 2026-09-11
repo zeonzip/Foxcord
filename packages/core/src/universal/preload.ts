@@ -6,7 +6,9 @@ log("Initializing...");
 
 import "../webpack/discord/modules";
 import { initPackages } from "@foxcord/core/package/package";
+import { registerPromises } from '@/webpack/discord/promises.ts';
 
 defineGlobal();
+registerPromises();
 initPackages();
 registerHook();

@@ -1,3 +1,5 @@
+import { discordDomReadyPromise } from '@/webpack/discord/promises.ts';
+
 export class StyleManager {
 	private static styleElements = new Map<string, HTMLStyleElement>();
 	private static parentContainer: HTMLElement | undefined = undefined;
@@ -39,8 +41,6 @@ export class StyleManager {
 		const flush = () =>{
 			if (!document || !document.head) return;
 
-			document.removeEventListener("DOMContentLoaded", flush);
-
 			const queue = [...this.pendingQueue];
 			this.pendingQueue = [];
 			this.isListening = false;
@@ -50,7 +50,7 @@ export class StyleManager {
 			}
 		}
 
-		document.addEventListener("DOMContentLoaded", flush);
+		discordDomReadyPromise.promise.then(flush);
 	}
 
 	private static retrieveGlobalElement(): HTMLElement {

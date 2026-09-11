@@ -6,6 +6,7 @@ import corePlugin from "./packages/core/core";
 import experimentsPlugin from "./packages/experiments";
 import privacyPlugin from "./packages/privacy";
 import testPlugin from "./packages/test";
+import { retrieveSavedPackages, savePackages } from '@/data/universal.ts';
 
 export interface PackageInterface {
 	name: string;
@@ -25,6 +26,13 @@ export type PackageEntry = {
 export class PackageStore extends FoxcordStore {
 	private packages: Map<string, PackageEntry> = new Map();
 	private pendingPackages: number = 0;
+
+	constructor(pre?: Map<string, PackageEntry>) {
+		super();
+		if (pre) {
+			this.packages = pre;
+		}
+	}
 
 	register(pack: PackageInterface, toggled = pack.core === true) {
 		this.rawRegister(pack, toggled);
@@ -87,6 +95,11 @@ export class PackageStore extends FoxcordStore {
 		this.emit();
 	}
 
+	protected override emit() {
+		super.emit();
+		savePackages();
+	}
+
 	get entries() {
 		return [...this.packages];
 	}
@@ -100,7 +113,7 @@ export class PackageStore extends FoxcordStore {
 	}
 }
 
-export const packageStore = new PackageStore();
+export const packageStore = new PackageStore(retrieveSavedPackages());
 
 export function initPackages() {
 	packageStore.registerBatch(

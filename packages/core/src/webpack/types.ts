@@ -15,7 +15,7 @@ export type WebpackCache = Record<number, WebpackCacheObject>;
 export interface WebpackCacheObject {
 	id: number;
 	loaded: boolean;
-	exports: Object;
+	exports: object;
 }
 
 export type Webpack = {

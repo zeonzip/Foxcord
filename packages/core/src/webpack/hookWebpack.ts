@@ -1,10 +1,9 @@
 import { log, throwingError } from "../log";
 import { proxyModules, setupPatches } from "./patch";
 import type { Webpack, WebpackRequire } from "./types";
+import { webpackPromise } from '@/webpack/discord/promises.ts';
 
 export var webpack: Webpack | undefined = undefined;
-const webpackResolvers = Promise.withResolvers<Webpack>();
-export const webpackPromise = webpackResolvers.promise;
 
 function isWebpackRequire(
 	obj: unknown,
@@ -47,7 +46,7 @@ export function registerHook(posthook?: (require: WebpackRequire) => void) {
 					webpackFactories: this.m,
 				};
 
-				webpackResolvers.resolve(webpack);
+				webpackPromise.resolvers.resolve(webpack);
 
 				setupPatches(this);
 
