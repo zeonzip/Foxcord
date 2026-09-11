@@ -10,7 +10,7 @@ await esbuild.build({
         "foxcord-trampoline": "./src/trampoline.ts"
     },
     bundle: true,
-    //minify: true,
+    minify: true,
     outdir: "./dist/asar",
     format: "cjs",
     packages: "external",
